@@ -1,0 +1,222 @@
+@startuml
+title Diagrama de Actividades - GENIA
+<style>
+activityDiagram {
+  BackgroundColor #FFFDFB
+  BorderColor #B8C5D6
+  FontColor #46566A
+  FontName Arial
+
+  activity {
+    BackgroundColor #DDEBF7
+    BorderColor #91B9DF
+    FontColor #34495E
+    FontName Arial
+    FontSize 14
+  }
+
+  diamond {
+    BackgroundColor #E9DFF5
+    LineColor #B6A0D2
+    FontColor #5D4B75
+    FontName Arial
+    FontSize 14
+  }
+
+  arrow {
+    FontColor #7B8794
+    FontName Arial
+    FontSize 13
+  }
+}
+
+document {
+  BackgroundColor transparent
+}
+</style>
+
+start
+:Ingresar a GENIA;
+:Mostrar página principal;
+
+if (¿Qué tipo de acceso desea?) then (Administrador)
+
+    :Ingresar correo y contraseña;
+    :Validar credenciales;
+
+    if (¿Datos correctos?) then (Sí)
+
+        :Mostrar acceso administrativo;
+        :Consultar listado de prompts;
+
+        if (¿Qué acción desea realizar?) then (Registrar)
+
+            :Abrir crear_prompt.jsp;
+            :Ingresar objetivo;
+            :Seleccionar formato;
+            :Seleccionar tono;
+            :Validar información;
+
+            if (¿Datos válidos?) then (Sí)
+                :Guardar prompt en bd_genia;
+                :Registrar en t_prompts;
+                :Mostrar notificación de éxito;
+            else (No)
+                :Mostrar mensaje de validación;
+            endif
+
+        elseif (Modificar)
+
+            :Seleccionar prompt;
+            :Modificar objetivo, formato o tono;
+            :Actualizar registro en MySQL;
+            :Mostrar confirmación;
+
+        elseif (Eliminar)
+
+            :Seleccionar prompt;
+            :Confirmar eliminación;
+            :Eliminar registro de MySQL;
+            :Actualizar listado;
+
+        else (Consultar)
+
+            :Mostrar prompts almacenados;
+            :Consultar información de la tabla t_prompts;
+
+        endif
+
+    else (No)
+
+        :Mostrar error de autenticación;
+
+    endif
+
+else (Visitante)
+
+    :Acceder a la guía educativa;
+    :Mostrar los cuatro módulos;
+
+    if (¿Qué módulo desea consultar?) then (Módulo 1)
+
+        :MÓDULO 1 - FUNDAMENTOS Y USO PRÁCTICO;
+        :Consultar conceptos de IA generativa;
+        :Conocer herramientas y aplicaciones de IA;
+        :Visualizar videos e infografías;
+        :Consultar ventajas y beneficios;
+        :Identificar limitaciones y riesgos;
+        :Revisar recomendaciones de uso responsable;
+        :Realizar evaluación de aprendizaje;
+
+    elseif (Módulo 2)
+
+        :MÓDULO 2 - NORMATIVIDAD Y PRIVACIDAD;
+        :Consultar normativas sobre Inteligencia Artificial;
+        :Revisar recomendación de ética de UNESCO;
+        :Consultar norma ISO/IEC 42001:2023;
+        :Revisar principios de la OCDE;
+        :Consultar legislación mexicana;
+        :Conocer recomendaciones de protección de datos;
+        :Realizar evaluación de aprendizaje;
+
+        if (¿Desea consultar el resumen de normativas?) then (Sí)
+            :Mostrar resumen de normativas;
+            :Generar o consultar documento PDF;
+            :Visualizar o guardar PDF;
+        else (No)
+            :Continuar consultando normativas;
+        endif
+
+    elseif (Módulo 3)
+
+        :MÓDULO 3 - ELABORACIÓN CORRECTA DE PROMPTS;
+        :Consultar elementos de un prompt efectivo;
+        :Conocer estructura y recomendaciones;
+        :Revisar ejemplos de prompts;
+        :Acceder al formulario de elaboración;
+
+        :Ingresar objetivo;
+        :Seleccionar formato;
+        :Seleccionar tono;
+        :Validar información;
+        :Generar prompt;
+        :Mostrar resultado;
+
+        if (¿Desea guardar el prompt?) then (Sí)
+
+            :Enviar información a JSP;
+            :Registrar en bd_genia;
+            :Guardar en tabla t_prompts;
+            :Mostrar confirmación;
+
+        else (No)
+
+            :Copiar o utilizar el prompt;
+
+        endif
+
+        :Consultar listado de prompts;
+        :Visualizar registros almacenados;
+
+    else (Módulo 4)
+
+        :MÓDULO 4 - ÉTICA, SEGURIDAD Y PROTECCIÓN DE DATOS;
+        :Consultar principios de uso ético de IA;
+        :Identificar riesgos de compartir información;
+        :Consultar recomendaciones de seguridad;
+        :Mostrar tarjeta financiera ficticia;
+        :Ingresar datos de prueba;
+        :Enviar información para procesamiento;
+
+        if (¿Información válida?) then (Sí)
+
+            :Identificar datos sensibles;
+            :Aplicar enmascaramiento;
+            :Procesar información mediante Java;
+            :Ejecutar cifrado AES;
+            :Obtener información protegida;
+            :Mostrar información enmascarada;
+            :Mostrar resultados del cifrado;
+
+        else (No)
+
+            :Mostrar mensaje de validación;
+
+        endif
+
+    endif
+
+    if (¿Desea consultar estadísticas de conectividad?) then (Sí)
+
+        :Consultar estadísticas de conectividad CDMX;
+        :Revisar información de hogares y dispositivos;
+        :Visualizar gráficas estadísticas;
+        :Consultar información de Wi-Fi gratuito;
+
+        if (¿Desea consultar el mapa interactivo?) then (Sí)
+
+            :Acceder al mapa de conectividad;
+            :Visualizar información por categoría;
+            :Visualizar puntos de Wi-Fi gratuito;
+
+
+        else (No)
+
+            :Continuar consultando estadísticas;
+
+        endif
+
+    else (No)
+
+        :Continuar en la guía educativa;
+
+    endif
+
+endif
+
+:Finalizar actividad;
+
+stop
+
+@enduml
+

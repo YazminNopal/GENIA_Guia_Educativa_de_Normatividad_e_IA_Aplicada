@@ -1,0 +1,136 @@
+@startuml
+title Diagrama de Casos de Uso - GENIA
+left to right direction
+
+skinparam backgroundColor #FFFDFB
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+
+skinparam ActorBorderColor #515FE5
+skinparam ActorFontColor #34495E
+
+skinparam UsecaseBackgroundColor #DDEBF7
+skinparam UsecaseBorderColor #91B9DF
+skinparam UsecaseFontColor #34495E
+
+skinparam PackageBackgroundColor #F4F7FA
+skinparam PackageBorderColor #B8C5D6
+
+actor "Usuario" as usuario
+actor "Administrador" as admin
+
+rectangle "GENIA (Guía Educativa de Normatividad e IA Aplicada)" {
+
+    package "Acceso y navegación" {
+
+        usecase "Consultar página principal" as UC1
+        usecase "Acceder a la guía educativa" as UC2
+        usecase "Navegar entre módulos" as UC3
+        usecase "Iniciar sesión" as UC4
+        usecase "Validar credenciales" as UC5
+    }
+
+    package "Módulos educativos" {
+
+        usecase "Módulo 1:\nFundamentos y uso práctico" as UC6
+        usecase "Consultar conceptos,\nherramientas y recursos" as UC7
+
+        usecase "Módulo 2:\nNormatividad y privacidad" as UC8
+        usecase "Consultar normativas\ny protección de datos" as UC9
+        usecase "Consultar resumen\nde normativas en PDF" as UC10
+
+        usecase "Módulo 3:\nElaboración correcta de prompts" as UC11
+        usecase "Consultar ejemplos\nde prompts" as UC12
+        usecase "Elaborar prompt\nmediante formulario" as UC13
+        usecase "Guardar prompt en MySQL" as UC14
+
+        usecase "Módulo 4:\nÉtica, seguridad y protección de datos" as UC15
+        usecase "Enmascarar información" as UC16
+        usecase "Cifrar y descifrar\ninformación AES" as UC17
+        usecase "Visualizar resultados\nde protección" as UC18
+    }
+
+    package "Administración de prompts" {
+
+        usecase "Consultar prompts almacenados" as UC19
+        usecase "Registrar prompt" as UC20
+        usecase "Modificar prompt" as UC21
+        usecase "Eliminar prompt" as UC22
+    }
+
+    package "Estadísticas y conectividad" {
+
+        usecase "Consultar estadísticas\nde conectividad CDMX" as UC23
+        usecase "Visualizar gráficas" as UC24
+        usecase "Consultar mapa interactivo" as UC25
+        usecase "Consultar puntos de\nWi-Fi gratuito" as UC26
+    }
+
+    UC4 .> UC5 : <<include>>
+
+    UC2 .> UC3 : <<include>>
+
+    UC6 .> UC7 : <<include>>
+    UC8 .> UC9 : <<include>>
+    UC9 .> UC10 : <<extend>>
+
+    UC11 .> UC12 : <<include>>
+    UC13 .> UC14 : <<extend>>
+
+    UC15 .> UC16 : <<include>>
+    UC15 .> UC17 : <<include>>
+    UC18 .> UC16 : <<include>>
+    UC18 .> UC17 : <<include>>
+
+    UC23 .> UC24 : <<include>>
+    UC25 .> UC26 : <<include>>
+
+    UC19 .> UC20 : <<extend>>
+    UC19 .> UC21 : <<extend>>
+    UC19 .> UC22 : <<extend>>
+
+    note right of UC4
+      RF-01:
+      El acceso administrativo requiere
+      autenticación mediante credenciales.
+      La guía educativa es de acceso
+      independiente, sin iniciar sesión.
+    end note
+
+    note right of UC14
+      Los prompts se almacenan en
+      bd_genia, tabla t_prompts,
+      mediante los campos:
+      id, fecha, objetivo, formato y tono.
+    end note
+
+    note right of UC10
+      El documento PDF corresponde
+      exclusivamente al resumen
+      de normativas.
+    end note
+
+}
+
+usuario --> UC1
+usuario --> UC2
+usuario --> UC3
+
+usuario --> UC6
+usuario --> UC8
+usuario --> UC11
+usuario --> UC13
+usuario --> UC15
+
+usuario --> UC23
+usuario --> UC25
+
+admin --> UC4
+admin --> UC19
+admin --> UC20
+admin --> UC21
+admin --> UC22
+
+@enduml
+

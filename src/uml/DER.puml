@@ -1,0 +1,167 @@
+@startuml
+
+entity Usuario {
+  * id_usuario : int <<PK>>
+  --
+  *nombre : String
+  *email : String
+  *contraseña : String
+  *numero_seguridad : String
+}
+
+entity Administrador {
+  * id_administrador : int <<PK>>
+  --
+  *nombre : String
+  *email : String
+  *contraseña : String
+  *numero_seguridad : String
+}
+
+entity Modulo {
+  * id_modulo : int <<PK>>
+  --
+  *nombre : String
+  *descripcion : String
+  *id_administrador : int <<FK>>
+}
+
+entity ContenidoEducativo {
+  * id_contenido : int <<PK>>
+  --
+  *titulo : String
+  *descripcion : String
+  *id_modulo : int <<FK>>
+}
+
+entity Cuestionario {
+  * id_cuestionario : int <<PK>>
+  --
+  *titulo : String
+  *id_modulo : int <<FK>>
+}
+
+entity Prompt {
+  * id_prompt : int <<PK>>
+  --
+  *fecha_creacion : String
+  *contexto : String
+  *objetivo : String
+  *formato : String
+  *tono : String
+  *instrucciones : String
+  *id_usuario : int <<FK>>
+}
+
+entity AccesoModulo {
+  * id_acceso : int <<PK>>
+  --
+  *id_usuario : int <<FK>>
+  *id_modulo : int <<FK>>
+}
+
+' ENTIDADES ADICIONALES DE GENIA
+
+entity Normativa {
+  * id_normativa : int <<PK>>
+  --
+  *nombre : String
+  *descripcion : String
+  *fuente : String
+  *documento_pdf : String
+  *id_modulo : int <<FK>>
+}
+
+entity EstadisticaConectividad {
+  * id_estadistica : int <<PK>>
+  --
+  *localidad : String
+  *tipo_dato : String
+  *valor : double
+}
+
+entity Grafica {
+  * id_grafica : int <<PK>>
+  --
+  *titulo : String
+  *tipo_grafica : String
+  *id_estadistica : int <<FK>>
+}
+
+entity MapaConectividad {
+  * id_mapa : int <<PK>>
+  --
+  *nombre : String
+  *descripcion : String
+}
+
+entity PuntoAccesoWifi {
+  * id_punto : int <<PK>>
+  --
+  *nombre : String
+  *direccion : String
+  *latitud : double
+  *longitud : double
+  *id_mapa : int <<FK>>
+}
+
+entity SeguridadDatos {
+  * id_seguridad : int <<PK>>
+  --
+  *fecha_proceso : String
+  *tipo_proteccion : String
+  *resultado : String
+  *id_usuario : int <<FK>>
+}
+
+entity Enmascaramiento {
+  * id_enmascaramiento : int <<PK>>
+  --
+  *dato_original : String
+  *dato_enmascarado : String
+  *id_seguridad : int <<FK>>
+}
+
+entity CifradoAES {
+  * id_cifrado : int <<PK>>
+  --
+  *algoritmo : String
+  *informacion_cifrada : String
+  *id_seguridad : int <<FK>>
+}
+
+entity GestionPrompt {
+  * id_gestion : int <<PK>>
+  --
+  *accion : String
+  *fecha : String
+  *id_prompt : int <<FK>>
+  *id_administrador : int <<FK>>
+}
+
+Administrador ||--o{ Modulo : gestiona
+
+Modulo ||--o{ ContenidoEducativo : contiene
+Modulo ||--o| Cuestionario : tiene
+
+Usuario ||--o{ Prompt : genera
+
+Usuario ||--o{ AccesoModulo : registra
+Modulo ||--o{ AccesoModulo : recibe
+
+' RELACIONES ADICIONALES
+
+Modulo ||--o{ Normativa : incluye
+
+EstadisticaConectividad ||--o{ Grafica : representa
+
+MapaConectividad ||--o{ PuntoAccesoWifi : contiene
+
+Usuario ||--o{ SeguridadDatos : utiliza
+SeguridadDatos ||--o{ Enmascaramiento : aplica
+SeguridadDatos ||--o{ CifradoAES : procesa
+
+Prompt ||--o{ GestionPrompt : registra
+Administrador ||--o{ GestionPrompt : administra
+
+@enduml

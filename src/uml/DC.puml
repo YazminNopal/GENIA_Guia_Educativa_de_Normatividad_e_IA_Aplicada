@@ -1,0 +1,188 @@
+
+@startuml
+
+class Usuario {
+    - nombre: String
+    - contraseña: String
+    - numeroSeguridad: String
+--
+  + iniciarSesion()
+  + consultarModulos()
+  + consultarRecursosEducativos()
+  + generarPrompts()
+  + respondercuestionarios()
+}
+
+class Administrador {
+    - nombre: String
+    - contraseña: String
+    - numeroSeguridad: String
+--
+  + agregarContenido()
+  + modificarContenido()
+  + eliminarContenido()
+  + actualizarContenido()
+}
+
+class Modulo {
+  - id_modulo: int
+  - nombre: String
+  - descripcion: String
+--
+  + mostrarContenido()
+  + mostrarCuestionarios()
+}
+
+class ContenidoEducativo {
+  - titulo: String
+  - descripcion: String
+--
+  + mostrarContenido()
+  + actualizarContenido()
+  + eliminarContenido()
+  + agregraContenido()
+}
+
+class Cuestionario {
+  - titulo: String
+  - modulo: String
+--
+  + mostrarPreguntas()
+  + calificar()
+}
+
+class Prompt {
+  - idPrompt: int
+  - fechaCreacion: String
+  - contexto: String
+  - objetivo: String
+  - formato: String
+  - tono: String
+  - instrucciones: String
+--
+  + generarPrompt()
+  + copiarPrompt()
+  + guardarPrompt()
+  + consultarPrompt()
+}
+
+Modulo "1" -- "0..*" ContenidoEducativo : contiene
+Modulo "1" -- "0..1" Cuestionario : tiene
+
+Administrador ..> ContenidoEducativo : gestiona
+Administrador ..> Modulo : gestiona
+
+Usuario "1" -- "0..*" Modulo : accede
+Usuario "1" -- "0..*" Prompt : elabora y guarda
+
+' CLASES ADICIONALES PARA GENIA
+
+class Normativa {
+  - id_normativa: int
+  - nombre: String
+  - descripcion: String
+  - fuente: String
+--
+  + consultarNormativa()
+  + mostrarResumen()
+  + consultarDocumentoPDF()
+}
+
+class EstadisticaConectividad {
+  - id_estadistica: int
+  - localidad: String
+  - tipoDato: String
+  - valor: double
+--
+  + consultarEstadisticas()
+  + generarGraficas()
+  + mostrarDatos()
+}
+
+class Grafica {
+  - tipoGrafica: String
+  - titulo: String
+--
+  + generarGrafica()
+  + actualizarGrafica()
+}
+
+class MapaConectividad {
+  - id_mapa: int
+  - ubicacion: String
+--
+  + mostrarMapa()
+  + consultarPuntosWifi()
+}
+
+class PuntoAccesoWifi {
+  - id_punto: int
+  - nombre: String
+  - direccion: String
+  - latitud: double
+  - longitud: double
+--
+  + mostrarUbicacion()
+  + consultarInformacion()
+}
+
+class SeguridadDatos {
+  - informacionOriginal: String
+  - informacionProtegida: String
+--
+  + protegerInformacion()
+  + mostrarResultados()
+}
+
+class Enmascaramiento {
+  - datoOriginal: String
+  - datoEnmascarado: String
+--
+  + enmascararDatos()
+  + mostrarDatosProtegidos()
+}
+
+class CifradoAES {
+  - algoritmo: String
+  - clave: String
+--
+  + cifrarInformacion()
+  + descifrarInformacion()
+}
+
+class ConexionBD {
+  - nombreBD: String
+  - estadoConexion: String
+--
+  + conectar()
+  + guardarDatos()
+  + consultarDatos()
+  + actualizarDatos()
+  + eliminarDatos()
+}
+
+class GestionPrompts {
+--
+  + registrarPrompt()
+  + listarPrompts()
+  + modificarPrompt()
+  + eliminarPrompt()
+}
+
+' RELACIONES ADICIONALES
+
+Modulo "1" -- "0..*" Normativa : incluye
+
+EstadisticaConectividad "1" -- "1..*" Grafica : genera
+
+MapaConectividad "1" -- "0..*" PuntoAccesoWifi : localiza
+
+SeguridadDatos "1" -- "1" Enmascaramiento : utiliza
+SeguridadDatos "1" -- "1" CifradoAES : utiliza
+
+ConexionBD ..> Prompt : almacena
+GestionPrompts ..> Prompt : administra
+GestionPrompts ..> ConexionBD : utiliza
+
+@enduml
+
