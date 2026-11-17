@@ -1,0 +1,190 @@
+4.1. SCRUM con PlantUML. Product Backlog, Lista Sprint, HU, BUG y Task del proyecto
+
+1. [EPIC-1] Planeación y análisis del sistema GENIA
+
+Sprint 1. Planeación del proyecto (3 días).
+
+[HU-01] Definir la problemática y propósito de GENIA.
+- [TASK-01] Identificar la problemática relacionada con el uso de la Inteligencia Artificial Generativa.
+- [TASK-02] Redactar la introducción y justificación del proyecto.
+- [TASK-03] Establecer el objetivo SMART de la plataforma.
+
+[HU-02] Definir el alcance del proyecto.
+- [TASK-04] Identificar los cuatro módulos educativos de GENIA.
+- [TASK-05] Establecer las funcionalidades incluidas y excluidas.
+- [TASK-06] Definir los usuarios y las características generales del sistema.
+
+[HU-03] Determinar la viabilidad del proyecto.
+- [TASK-07] Elaborar el estudio de factibilidad técnica.
+- [TASK-08] Elaborar el estudio de factibilidad operativa.
+- [TASK-09] Elaborar el estudio de factibilidad financiera.
+
+2. [EPIC-2] Análisis y modelamiento de software
+
+Sprint 2. Análisis de requerimientos y diseño UML (4 días).
+
+[HU-04] Identificar los requerimientos del sistema.
+- [TASK-10] Identificar las necesidades de los usuarios de GENIA.
+- [TASK-11] Definir los requerimientos funcionales.
+- [TASK-12] Definir los requerimientos no funcionales.
+- [TASK-13] Establecer los criterios de aceptación.
+
+[HU-05] Modelar el funcionamiento de la plataforma.
+- [TASK-14] Elaborar el diagrama de casos de uso.
+- [TASK-15] Elaborar el diagrama de clases.
+- [TASK-16] Elaborar el diagrama de actividades.
+- [TASK-17] Representar los procesos principales mediante PlantUML.
+
+[HU-06] Diseñar la estructura visual y de datos.
+- [TASK-18] Elaborar los wireframes de las interfaces principales.
+- [TASK-19] Diseñar el diagrama Entidad-Relación.
+- [TASK-20] Definir el diseño físico de la base de datos.
+[BUG-01] Inconsistencias entre los requerimientos definidos y los diagramas del sistema, si se detectan.
+
+3. [EPIC-3] Desarrollo de la plataforma y módulos educativos
+
+Sprint 3. Estructura inicial e interfaces de GENIA (8 días).
+
+[HU-07] Crear la estructura inicial de la plataforma.
+- [TASK-21] Crear el proyecto web utilizando JSP.
+- [TASK-22] Organizar las páginas, archivos CSS, JavaScript e imágenes.
+- [TASK-23] Configurar el entorno de desarrollo y servidor Apache Tomcat.
+- [TASK-24] Incorporar Bootstrap y Bootstrap Icons.
+
+[HU-08] Implementar la navegación principal.
+- [TASK-25] Diseñar la página principal de GENIA.
+- [TASK-26] Implementar una interfaz de acceso independiente mediante Login.
+- [TASK-27] Crear el acceso a la guía educativa.
+- [TASK-28] Implementar la navegación entre secciones.
+
+[HU-09] Diseñar la presentación visual de los módulos.
+
+- [TASK-29] Definir estilos visuales compartidos.
+- [TASK-30] Implementar interfaces adaptables a diferentes dispositivos.
+
+Incidencias contempladas:
+- [BUG-02] Error en las rutas de archivos CSS, imágenes o recursos multimedia, si se presenta.
+- [BUG-03] Problemas de visualización o navegación entre páginas JSP, si se presentan.
+
+Sprint 4. Desarrollo de módulos educativos (8 días).
+
+[HU-10] Implementar el módulo 1. Fundamentos y uso práctico.
+- [TASK-31] Incorporar conceptos de Inteligencia Artificial Generativa.
+- [TASK-32] Integrar videos e infografías educativas.
+- [TASK-33] Incorporar recomendaciones, ventajas, limitaciones y riesgos.
+- [TASK-34] Integrar ejemplos de aplicación de IA en Ingeniería de Software.
+
+[HU-11] Implementar el módulo 2. Normatividad y privacidad.
+- [TASK-35] Incorporar información sobre protección de datos personales.
+- [TASK-36] Integrar documentación de UNESCO e ISO/IEC.
+- [TASK-37] Incorporar referencias de la legislación mexicana.
+- [TASK-38] Agregar recomendaciones de privacidad y seguridad.
+
+[HU-12] Implementar el módulo 3. Elaboración correcta de prompts.
+- [TASK-39] Explicar los elementos de un prompt efectivo.
+- [TASK-40] Incorporar ejemplos y recomendaciones para estructurar instrucciones.
+- [TASK-41] Diseñar el formulario de elaboración de prompts.
+- [TASK-42] Incorporar ejemplos iniciales de prompts para su consulta y utilización.
+
+[HU-13] Implementar el módulo 4. Ética, seguridad y protección de datos.
+- [TASK-43] Incorporar recomendaciones sobre el uso ético de la IA.
+- [TASK-44] Explicar los riesgos de compartir información confidencial.
+- [TASK-45] Integrar ejemplos de enmascaramiento de información.
+- [TASK-46] Diseñar el ejemplo interactivo de tarjeta financiera ficticia.
+
+Incidencias contempladas:
+- [BUG-04] Error en la visualización de videos, infografías o contenidos educativos, si se presenta.
+- [BUG-05] Problemas de adaptación de las interfaces en diferentes tamaños de pantalla, si se presentan.
+
+4. [EPIC-4] Persistencia de datos y mecanismos de seguridad
+
+Sprint 5. Base de datos y administración de prompts (3 días).
+
+[HU-14] Configurar la base de datos de GENIA.
+- [TASK-47] Crear la base de datos bd_genia en MySQL.
+- [TASK-48] Crear la tabla t_prompts.
+- [TASK-49] Definir los campos id, fecha, objetivo, formato y tono.
+- [TASK-50] Configurar la conexión entre JSP y MySQL.
+
+[HU-15] Implementar el almacenamiento y consulta de prompts.
+- [TASK-51] Desarrollar el formulario crear_prompt.jsp.
+- [TASK-52] Implementar el registro de prompts en la base de datos.
+- [TASK-53] Mostrar los prompts almacenados en prompts.jsp.
+- [TASK-54] Incorporar notificaciones de confirmación de registro.
+
+[HU-16] Implementar la administración de prompts.
+- [TASK-55] Desarrollar la función de edición de registros.
+- [TASK-56] Implementar la eliminación de prompts.
+- [TASK-57] Incorporar la opción de exportar o guardar prompts de la BD.
+
+Incidencias contempladas:
+- [BUG-06] Error al guardar información por diferencias entre los campos del formulario y la estructura de la tabla, si se presenta.
+- [BUG-07] Error de compilación o ejecución en páginas JSP durante las operaciones CRUD, si se presenta.
+
+Sprint 6. Ética, cifrado y protección de información (3 días).
+
+[HU-17] Implementar mecanismos de protección de datos.
+- [TASK-58] Diseñar el proceso de protección de información.
+- [TASK-59] Implementar el enmascaramiento de datos sensibles.
+- [TASK-60] Incorporar el cifrado y descifrado mediante AES.
+- [TASK-61] Implementar el procesamiento criptográfico de la información mediante Java.
+- [TASK-62] Mostrar los resultados del proceso de protección de información.
+
+[HU-18] Integrar ejemplos prácticos de seguridad.
+- [TASK-63] Crear datos financieros ficticios para las pruebas.
+- [TASK-64] Implementar la tarjeta de crédito interactiva.
+- [TASK-65] Mostrar la comparación entre información original y enmascarada.
+- [TASK-66] Incorporar recomendaciones para evitar compartir información sensible.
+
+Incidencias contempladas:
+- [BUG-08] Error en el proceso de cifrado o descifrado AES, si se presenta.
+- [BUG-09] Error al mostrar la información enmascarada después de enviar el formulario, si se presenta.
+
+5. [EPIC-5] Estadísticas, integración, pruebas y entrega
+
+Sprint 7. Estadísticas e integración general (3 días).
+
+
+[HU-19] Incorporar información estadística de conectividad en CDMX.
+- [TASK-67] Consultar información estadística del INEGI.
+- [TASK-68] Organizar los datos sobre hogares con acceso a Internet y dispositivos tecnológicos.
+- [TASK-69] Diseñar gráficas para representar los datos estadísticos.
+- [TASK-70] Incorporar información sobre puntos de Wi-Fi gratuito.
+
+[HU-20] Implementar el mapa interactivo de conectividad.
+- [TASK-71] Integrar el mapa de conectividad de Ciudad de México.
+- [TASK-72] Incorporar el acceso al mapa desde GENIA.
+
+[HU-21] Integrar los componentes de la plataforma.
+- [TASK-73] Integrar los cuatro módulos educativos.
+- [TASK-74] Verificar los enlaces y navegación entre las páginas.
+- [TASK-75] Revisar la presentación general de la plataforma.
+
+Incidencias contempladas:
+- [BUG-10] Error en la representación de datos estadísticos en las gráficas, si se presenta.
+- [BUG-11] Problemas de carga o visualización del mapa interactivo, si se presentan.
+
+Sprint 8. Pruebas, correcciones y entrega final (2 días).
+
+
+[HU-22] Validar el funcionamiento de GENIA.
+- [TASK-76] Realizar pruebas de navegación.
+- [TASK-77] Validar el funcionamiento del Login.
+- [TASK-78] Verificar las operaciones CRUD de prompts.
+- [TASK-79] Comprobar el funcionamiento del cifrado y enmascaramiento.
+- [TASK-80] Verificar la visualización de gráficas y mapa.
+
+[HU-23] Corregir errores y validar la plataforma.
+- [TASK-81] Registrar y clasificar los errores encontrados.
+- [TASK-82] Corregir errores de compilación y ejecución.
+- [TASK-83] Verificar la compatibilidad y adaptabilidad de las interfaces.
+- [TASK-84] Realizar pruebas finales de funcionamiento.
+
+[HU-24] Documentar y presentar el proyecto.
+- [TASK-85] Organizar el código fuente y archivos del proyecto.
+- [TASK-86] Publicar el portafolio del proyecto en GitHub.
+- [TASK-87] Documentar el seguimiento SCRUM en Jira.
+- [TASK-88] Integrar evidencias del desarrollo.
+- [TASK-89] Preparar la presentación y conclusión final.
+
+[BUG-12] Errores de funcionamiento identificados durante las pruebas finales, si se presentan.

@@ -1,0 +1,28 @@
+@startuml
+title Diseño Físico - Base de datos GENIA
+
+hide circle
+skinparam linetype ortho
+skinparam entity {
+    BackgroundColor #EAF0FF
+    BorderColor #515FE5
+    FontColor #26324A
+}
+database "bd_genia" {
+    entity "t_prompts" as prompts {
+        * id : INT <<PK, AUTO_INCREMENT>>
+        --
+        fecha : VARCHAR(20)
+        objetivo : VARCHAR(20)
+        formato : VARCHAR(20)
+        tono : VARCHAR(20)
+    }
+}
+
+note right of prompts
+  Almacena los prompts
+  registrados en GENIA.
+end note
+
+@enduml
+
